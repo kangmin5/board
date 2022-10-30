@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import BoardService from '../services/BoardService';
 
 const AddBoard = () => {
+    const navigate = useNavigate();
     const [board, setBoard] = useState({
         id:"",
         title : "",
@@ -18,11 +20,17 @@ const AddBoard = () => {
         BoardService.saveBoard(board)
             .then((response) => {
                 console.log(response);
+                if (response.status === 200) {
+                    navigate('/boardList');
+                }
             })
             .catch((error) => {
                 console.log(error);
             });
-            
+    }
+    const reset = (e) => {
+        e.preventDefault();
+        setBoard({ id:"", title : "", content : ""});
     }
 
   return (
@@ -35,7 +43,7 @@ const AddBoard = () => {
                     <label className=' block text-gray-600 text-sm font-normal'>글 제목</label>
                       <input
                             type="text"
-                            className='h-10 w-96 border mt-2 px-3 py-3'
+                            className='h-10 w-96 border mt-2 px-3 py-3 text-sm font-normal'
                             name='title'
                             value={board.title}
                             onChange={(e) =>handleChange(e)}
@@ -45,7 +53,7 @@ const AddBoard = () => {
                     <label className=' block text-gray-600 text-sm font-normal'>글 내용</label>
                       <input
                             type="text"
-                            className='h-10 w-96 border mt-2 px-3 py-3'
+                            className='h-10 w-96 border mt-2 px-3 py-3 text-sm font-normal'
                             name='content'
                             value={board.content}
                             onChange={(e) =>handleChange(e)}
@@ -53,7 +61,7 @@ const AddBoard = () => {
                 </div>
                 <div className='items-center justify-center h-full w-full my-4 space-x-4'>
                       <button onClick={saveBoard} className='text-white text-sm bg-green-400 py-2 px-4 rounded hover:bg-green-700'>Save</button>
-                      <button className='text-white text-sm bg-red-400 py-2 px-4 rounded hover:bg-red-700'>Clear</button>
+                      <button onClick={reset} className='text-white text-sm bg-red-400 py-2 px-4 rounded hover:bg-red-700'>Clear</button>
 
                 </div>
             </div>
