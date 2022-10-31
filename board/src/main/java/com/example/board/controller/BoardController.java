@@ -35,4 +35,15 @@ public class BoardController {
         response.put("deleted",deleted);
         return ResponseEntity.ok(response);
     }
+    @GetMapping("/board/{id}")
+    public ResponseEntity<Board> getBoardById(@PathVariable Long id){
+        Board board = null;
+        board = boardService.getBoardById(id);
+        return ResponseEntity.ok(board);
+    }
+    @PutMapping("/board/{id}")
+    public ResponseEntity<Board> updateBoard(@PathVariable Long id,@RequestBody Board board){
+        board = boardService.updataBoard(id,board);
+        return ResponseEntity.ok(board);
+    }
 }

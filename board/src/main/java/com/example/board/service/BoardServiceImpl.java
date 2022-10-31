@@ -17,6 +17,7 @@ public class BoardServiceImpl implements BoardService {
         this.boardRepository = boardRepository;
     }
 
+//생성
     @Override
     public Board createBoard(Board board) {
         BoardEntity boardEntity = new BoardEntity();
@@ -25,7 +26,7 @@ public class BoardServiceImpl implements BoardService {
         boardRepository.save(boardEntity);
         return board;
     }
-
+//조회
     @Override
     public List<Board> getAllBoards() {
         List<BoardEntity> boardEntities
@@ -39,11 +40,30 @@ public class BoardServiceImpl implements BoardService {
                 .collect(Collectors.toList());
         return boards;
     }
-
+//삭제
     @Override
     public boolean deleteBoard(Long id) {
-        BoardEntity board = boardRepository.findById(id).get();
-        boardRepository.delete(board);
+        BoardEntity boardEntity = boardRepository.findById(id).get();
+        boardRepository.delete(boardEntity);
         return true;
     }
+//수정
+    @Override
+    public Board getBoardById(Long id) {
+        BoardEntity boardEntity = boardRepository.findById(id).get();
+        Board board = new Board();
+        BeanUtils.copyProperties(boardEntity,board);
+        return board;
+    }
+
+    @Override
+    public Board updataBoard(Long id, Board board) {
+        BoardEntity boardEntity = boardRepository.findById(id).get();
+        boardEntity.setTitle(board.getTitle());
+        boardEntity.setContent(board.getContent());
+
+        boardRepository.save(boardEntity);
+        return board;
+    }
+
 }

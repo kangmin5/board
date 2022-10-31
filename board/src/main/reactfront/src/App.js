@@ -4,6 +4,7 @@ import './App.css';
 import AddBoard from './components/AddBoard';
 import BoardList from './components/BoardList';
 import Navbar from './components/Navbar';
+import UpdateBoard from './components/UpdateBoard';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path='/' element={<BoardList />} />
           <Route path='/boardList' element={<BoardList />} />
           <Route path='/addBoard' element={<AddBoard />} />
+          <Route path='/updateBoard/:id' element={<UpdateBoard />} />
         </Routes>
       </BrowserRouter>
     </>

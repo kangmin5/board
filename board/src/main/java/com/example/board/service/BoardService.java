@@ -12,4 +12,9 @@ public interface BoardService {
     List<Board> getAllBoards();
 
     boolean deleteBoard(Long id);
+
+
+    Board getBoardById(Long id);
+
+    Board updataBoard(Long id, Board board);
 }

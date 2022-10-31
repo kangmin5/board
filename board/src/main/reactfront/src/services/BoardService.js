@@ -14,6 +14,13 @@ class BoardService{
     deleteBoard(id) {
         return axios.delete(BOARD_API_BASE_URL + "/" + id);
     }
+
+    getBoardsById(id) {
+        return axios.get(BOARD_API_BASE_URL + "/" + id);
+    }
+    updateBoard(id, board) {
+        return axios.put(BOARD_API_BASE_URL + "/" + id, board);
+    }
 }
 
 export default new BoardService();
