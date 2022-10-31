@@ -12,11 +12,14 @@ const Board = ({ board, deleteBoard }) => {
         <td className='text-left px-6 py-4 whitespace-nowrap'>
             <div className='text-sm text-gray-500'>{board.id}</div>
         </td>
-        <td className='text-left px-6 py-4 whitespace-nowrap'>
-            <div className='text-sm text-gray-500'>{board.title}</div>
+        <td className='text-left px-6 py-4 '>
+            <div className='text-sm text-gray-500 whitespace-nowrap text-ellipsis w-60 overflow-hidden'>{board.title}</div>
         </td>
-        <td className='text-left px-6 py-4 whitespace-nowrap'>
-            <div className='text-sm text-gray-500'>{board.content}</div>
+        <td className='text-left px-6 py-4 '>
+            <div className='text-sm text-gray-500 whitespace-nowrap text-ellipsis w-80 overflow-hidden'>{board.content}</div>
+        </td>
+        <td className='text-right px-6 py-4 whitespace-nowrap'>
+            <div className='text-sm text-gray-500'>{board.lastUpdatedDate}</div>
         </td>
         <td className='text-right px-6 py-4 whitespace-nowrap font-medium text-sm'>
             <button

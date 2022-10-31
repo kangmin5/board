@@ -54,6 +54,7 @@ const BoardList = () => {
                         <th className='text-left font-medium text-gray-500 tracking-wider py-3 px-6'>#</th>
                         <th className='text-left font-medium text-gray-500 tracking-wider py-3 px-6'>제 목</th>
                         <th className='text-left font-medium text-gray-500 tracking-wider py-3 px-6'>내 용</th>
+                        <th className='text-right font-medium text-gray-500 tracking-wider py-3 px-6'>최근수정일</th>
                         <th className='text-right font-medium text-gray-500 tracking-wider py-3 px-6'>##</th>
                     </tr>
                 </thead>

@@ -7,7 +7,9 @@ const AddBoard = () => {
     const [board, setBoard] = useState({
         id:"",
         title : "",
-        content : ""
+        content: "",
+        createDate: "",
+        lastUpdatedDate: "",
     })
 
     const handleChange = (e) => {
@@ -30,7 +32,7 @@ const AddBoard = () => {
     }
     const reset = (e) => {
         e.preventDefault();
-        setBoard({ id:"", title : "", content : ""});
+        setBoard({ id:"", title : "", content : "",createDate: "",lastUpdatedDate: "",});
     }
 
   return (

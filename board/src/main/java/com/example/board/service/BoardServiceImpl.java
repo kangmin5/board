@@ -31,12 +31,16 @@ public class BoardServiceImpl implements BoardService {
     public List<Board> getAllBoards() {
         List<BoardEntity> boardEntities
                 = boardRepository.findAll();
-        List<Board> boards = boardEntities
+        List<Board> boards = (List<Board>) boardEntities
                 .stream()
                 .map(bbb->new Board(
                         bbb.getId(),
                         bbb.getTitle(),
-                        bbb.getContent()))
+                        bbb.getContent(),
+                        bbb.getCreateDate(),
+                        bbb.getLastUpdatedDate())
+
+                )
                 .collect(Collectors.toList());
         return boards;
     }
